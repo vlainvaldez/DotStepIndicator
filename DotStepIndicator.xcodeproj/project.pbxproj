@@ -13,6 +13,7 @@
 		7C52F8C52243D52000C9436D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C52F8C32243D52000C9436D /* LaunchScreen.storyboard */; };
 		7C52F8D32243D79000C9436D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D22243D79000C9436D /* UIViewExtensions.swift */; };
 		7C52F8D52243D7E200C9436D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D42243D7E200C9436D /* MainView.swift */; };
+		7C52F8D92243DE0700C9436D /* AppUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D82243DE0700C9436D /* AppUI.swift */; };
 		D4B766EC80A7656F97B24864 /* Pods_DotStepIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D02A6F6DBE0C9D0FF32E32 /* Pods_DotStepIndicator.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		7C52F8C62243D52000C9436D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C52F8D22243D79000C9436D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		7C52F8D42243D7E200C9436D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7C52F8D82243DE0700C9436D /* AppUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUI.swift; sourceTree = "<group>"; };
 		D2B3D4B4E9DF19F99CB00724 /* Pods-DotStepIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DotStepIndicator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DotStepIndicator/Pods-DotStepIndicator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 		7C52F8D02243D74D00C9436D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7C52F8D62243DDEB00C9436D /* UI */,
 				7C52F8D12243D77D00C9436D /* Extensions */,
 			);
 			path = Utilities;
@@ -128,6 +131,22 @@
 				7C52F8D22243D79000C9436D /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7C52F8D62243DDEB00C9436D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7C52F8D72243DDF400C9436D /* Enums */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7C52F8D72243DDF400C9436D /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				7C52F8D82243DE0700C9436D /* AppUI.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		9D078320872724BFDA767465 /* Pods */ = {
@@ -258,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C52F8D92243DE0700C9436D /* AppUI.swift in Sources */,
 				7C52F8BD2243D51F00C9436D /* MainVC.swift in Sources */,
 				7C52F8D52243D7E200C9436D /* MainView.swift in Sources */,
 				7C52F8D32243D79000C9436D /* UIViewExtensions.swift in Sources */,
