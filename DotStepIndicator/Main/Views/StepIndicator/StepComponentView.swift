@@ -24,6 +24,12 @@ public class StepComponentView: UIView {
         return view
     }()
     
+    public let endDotView: UIView = {
+        let view: UIView = UIView()
+        view.backgroundColor = AppUI.Color.blue
+        return view
+    }()
+    
     // MARK: Stored Properties
     private var horizontalLineWidth: Constraint!
     
@@ -45,6 +51,7 @@ public class StepComponentView: UIView {
         
         self.horizontalLineView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
             make.leading.equalTo(self.dotView.snp.trailing)
+            make.trailing.equalToSuperview()
             make.centerY.equalTo(self.dotView)
             make.height.equalTo(5.0)
             self.horizontalLineWidth = make.width.equalTo(100.0).constraint
@@ -54,6 +61,7 @@ public class StepComponentView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()        
         self.dotView.setRadius()
+        self.endDotView.setRadius()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -65,5 +73,15 @@ public class StepComponentView: UIView {
 extension StepComponentView {
     public func setBarWith(to width: CGFloat) {
         self.horizontalLineWidth.update(offset: width)
+    }
+    
+    public func withEnd() {
+        self.subview(forAutoLayout: self.endDotView)
+        self.endDotView.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+            make.top.equalToSuperview()
+            make.leading.equalTo(self.horizontalLineView.snp.trailing)
+            make.height.equalTo(20.0)
+            make.width.equalTo(20.0)
+        }
     }
 }

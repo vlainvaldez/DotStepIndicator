@@ -64,6 +64,25 @@ public final class MainView: UIView {
         return view
     }()
     
+    public let stepComponent2: StepComponentView = {
+        let view: StepComponentView = StepComponentView()
+        return view
+    }()
+    
+    public let stepComponent3: StepComponentView = {
+        let view: StepComponentView = StepComponentView()
+        view.withEnd()
+        return view
+    }()
+    
+    public let stepStackView: UIStackView = {
+        let view: UIStackView = UIStackView()
+        view.axis = .horizontal
+        view.contentMode = UIView.ContentMode.center
+        view.spacing = 0.0
+        return view
+    }()
+    
     
     // MARK: Stored Properties
     public var horizontalView1Width: Constraint!
@@ -77,7 +96,7 @@ public final class MainView: UIView {
         
         self.backgroundColor = UIColor.white
         
-        self.subviews(forAutoLayout: self.stepIndicatorContainer, self.stepComponent)
+        self.subviews(forAutoLayout: self.stepIndicatorContainer, self.stepStackView)
         
         self.stepIndicatorContainer.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
             make.top.equalToSuperview().offset(50.0)
@@ -86,11 +105,11 @@ public final class MainView: UIView {
             make.height.equalTo(300.0)
         }
         
-        self.stepComponent.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
-            make.top.equalTo(self.stepIndicatorContainer.snp.bottom)
-            make.leading.equalToSuperview()
-        }
-        
+//        self.stepComponent.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+//            make.top.equalTo(self.stepIndicatorContainer.snp.bottom)
+//            make.leading.equalToSuperview()
+//        }
+
         self.stepIndicatorContainer.subviews(forAutoLayout: [
             self.dotView1, self.horizontalLineView1,
             self.dotView2, self.horizontalLineView2,
@@ -166,7 +185,17 @@ public final class MainView: UIView {
         self.horizontalView3Width.update(offset: horizontalLineViewWidth)
         
         self.stepComponent.setBarWith(to: horizontalLineViewWidth)
-    
+        
+        self.stepStackView.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.stepIndicatorContainer.snp.bottom).offset(50.0)
+            make.leading.equalToSuperview().offset(20.0)
+            make.trailing.equalToSuperview().inset(40.0)
+        }
+        
+        self.stepStackView.addArrangedSubview(self.stepComponent)
+        self.stepStackView.addArrangedSubview(self.stepComponent2)
+        self.stepStackView.addArrangedSubview(self.stepComponent3)
+        self.stepStackView.distribution = .fillEqually
     }
     
     public override func draw(_ rect: CGRect) {
