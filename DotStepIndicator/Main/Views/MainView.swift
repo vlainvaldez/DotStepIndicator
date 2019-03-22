@@ -70,5 +70,8 @@ public final class MainView: UIView {
         self.stepStackView.addArrangedSubview(self.stepComponent3)
         self.stepStackView.addArrangedSubview(self.stepComponent4)
         self.stepStackView.distribution = .fillEqually
+        
+        self.stepComponent.setPassed()
+        stepComponent2.setCurrent()
     }
 }

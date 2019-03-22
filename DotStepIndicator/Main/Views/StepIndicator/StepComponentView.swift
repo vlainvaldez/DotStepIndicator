@@ -14,19 +14,19 @@ public class StepComponentView: UIView {
     // MARK: Subviews
     public let dotView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = AppUI.Color.blue
+        view.backgroundColor = UIColor.lightGray
         return view
     }()
     
     public let horizontalLineView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = AppUI.Color.blue
+        view.backgroundColor = UIColor.lightGray
         return view
     }()
     
     public let endDotView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = AppUI.Color.blue
+        view.backgroundColor = UIColor.lightGray
         return view
     }()
     
@@ -82,5 +82,15 @@ extension StepComponentView {
             make.height.equalTo(20.0)
             make.width.equalTo(20.0)
         }
+    }
+    
+    public func setPassed(){
+        self.dotView.backgroundColor = AppUI.Color.blue
+        self.horizontalLineView.backgroundColor = AppUI.Color.blue
+        self.endDotView.backgroundColor = AppUI.Color.blue
+    }
+    
+    public func setCurrent() {
+        self.dotView.backgroundColor = AppUI.Color.blue
     }
 }
