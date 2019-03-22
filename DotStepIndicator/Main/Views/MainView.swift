@@ -59,6 +59,12 @@ public final class MainView: UIView {
         return view
     }()
     
+    public let stepComponent: StepComponentView = {
+        let view: StepComponentView = StepComponentView()
+        return view
+    }()
+    
+    
     // MARK: Stored Properties
     public var horizontalView1Width: Constraint!
     public var horizontalView2Width: Constraint!
@@ -66,17 +72,23 @@ public final class MainView: UIView {
     
     // Initializer
     public override init(frame: CGRect) {
+        
         super.init(frame: frame)
         
         self.backgroundColor = UIColor.white
         
-        self.subview(forAutoLayout: self.stepIndicatorContainer)
+        self.subviews(forAutoLayout: self.stepIndicatorContainer, self.stepComponent)
         
         self.stepIndicatorContainer.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
             make.top.equalToSuperview().offset(50.0)
             make.leading.equalToSuperview().offset(25.0)
             make.trailing.equalToSuperview().inset(25.0)
             make.height.equalTo(300.0)
+        }
+        
+        self.stepComponent.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.stepIndicatorContainer.snp.bottom)
+            make.leading.equalToSuperview()
         }
         
         self.stepIndicatorContainer.subviews(forAutoLayout: [
@@ -152,6 +164,8 @@ public final class MainView: UIView {
         self.horizontalView1Width.update(offset: horizontalLineViewWidth)
         self.horizontalView2Width.update(offset: horizontalLineViewWidth)
         self.horizontalView3Width.update(offset: horizontalLineViewWidth)
+        
+        self.stepComponent.setBarWith(to: horizontalLineViewWidth)
     
     }
     
