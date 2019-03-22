@@ -53,8 +53,7 @@ public class StepComponentView: UIView {
             make.leading.equalTo(self.dotView.snp.trailing)
             make.trailing.equalToSuperview()
             make.centerY.equalTo(self.dotView)
-            make.height.equalTo(5.0)
-            self.horizontalLineWidth = make.width.equalTo(100.0).constraint
+            make.height.equalTo(2.5)
         }
     }
     
