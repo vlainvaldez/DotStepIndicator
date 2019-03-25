@@ -32,6 +32,11 @@ public final class MainView: UIView {
         return view
     }()
     
+    private lazy var stepComponents: [StepComponentView] = [
+        self.stepComponent, self.stepComponent2,
+        self.stepComponent3, self.stepComponent4
+    ]
+    
     public let stepStackView: UIStackView = {
         let view: UIStackView = UIStackView()
         view.axis = .horizontal
@@ -51,6 +56,7 @@ public final class MainView: UIView {
     }()
     
     // MARK: Stored Properties
+    private var currentStep: Int = 0
     
     // Initializer
     public override init(frame: CGRect) {
@@ -69,6 +75,8 @@ public final class MainView: UIView {
             make.width.equalTo(100.0)
             make.height.equalTo(60.0)
         }
+        
+        self.stepComponents.first?.setCurrent()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -90,8 +98,19 @@ public final class MainView: UIView {
         self.stepStackView.addArrangedSubview(self.stepComponent3)
         self.stepStackView.addArrangedSubview(self.stepComponent4)
         self.stepStackView.distribution = .fillEqually
+    }
+    
+    public func setNext() {
+        let previousStep: StepComponentView = self.stepComponents[self.currentStep]
+        previousStep.setPassed()
         
-        self.stepComponent.setPassed()
-        stepComponent2.setCurrent()
+        switch self.currentStep < self.stepComponents.count - 1 {
+            case true:
+                self.currentStep += 1
+                let nextStep: StepComponentView = self.stepComponents[self.currentStep]
+                nextStep.setCurrent()
+            case false:
+                break
+        }
     }
 }
