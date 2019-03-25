@@ -11,31 +11,29 @@ import SnapKit
 
 public final class MainView: UIView {
     
-    public let stepComponent: StepComponentView = {
-        let view: StepComponentView = StepComponentView()
-        return view
-    }()
+//    public let stepComponent: StepComponentView = {
+//        let view: StepComponentView = StepComponentView()
+//        return view
+//    }()
+//
+//    public let stepComponent2: StepComponentView = {
+//        let view: StepComponentView = StepComponentView()
+//        return view
+//    }()
+//
+//    public let stepComponent3: StepComponentView = {
+//        let view: StepComponentView = StepComponentView()
+//        view.withEnd()
+//        return view
+//    }()
     
-    public let stepComponent2: StepComponentView = {
-        let view: StepComponentView = StepComponentView()
-        return view
-    }()
+//    public let stepComponent4: StepComponentView = {
+//        let view: StepComponentView = StepComponentView()
+//        view.withEnd()
+//        return view
+//    }()
     
-    public let stepComponent3: StepComponentView = {
-        let view: StepComponentView = StepComponentView()
-        return view
-    }()
-    
-    public let stepComponent4: StepComponentView = {
-        let view: StepComponentView = StepComponentView()
-        view.withEnd()
-        return view
-    }()
-    
-    private lazy var stepComponents: [StepComponentView] = [
-        self.stepComponent, self.stepComponent2,
-        self.stepComponent3, self.stepComponent4
-    ]
+    private lazy var stepComponents: [StepComponentView] = [StepComponentView]()
     
     public let stepStackView: UIStackView = {
         let view: UIStackView = UIStackView()
@@ -57,12 +55,12 @@ public final class MainView: UIView {
     
     // MARK: Stored Properties
     private var currentStep: Int = 0
+    private var numberOfSteps: Int
     
     // Initializer
-    public override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
+    public init(numberOfSteps: Int = 3) {
+        self.numberOfSteps = numberOfSteps
+        super.init(frame: CGRect.zero)
         self.backgroundColor = UIColor.white
         
         self.subviews(forAutoLayout:
@@ -77,6 +75,16 @@ public final class MainView: UIView {
         }
         
         self.stepComponents.first?.setCurrent()
+        
+        for number in 0...self.numberOfSteps - 1 {
+            let view: StepComponentView = StepComponentView()
+            if number == self.numberOfSteps - 1 {
+                view.withEnd()
+            }
+            self.stepStackView.addArrangedSubview(view)
+            self.stepComponents.append(view)
+        }
+        self.stepStackView.distribution = .fillEqually
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -92,12 +100,6 @@ public final class MainView: UIView {
             make.trailing.equalToSuperview().inset(40.0)
             make.height.equalTo(100.0)
         }
-        
-        self.stepStackView.addArrangedSubview(self.stepComponent)
-        self.stepStackView.addArrangedSubview(self.stepComponent2)
-        self.stepStackView.addArrangedSubview(self.stepComponent3)
-        self.stepStackView.addArrangedSubview(self.stepComponent4)
-        self.stepStackView.distribution = .fillEqually
     }
     
     public func setNext() {

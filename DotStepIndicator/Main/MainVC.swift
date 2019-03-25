@@ -13,7 +13,7 @@ public final class MainVC: UIViewController {
     // MARK: LifeCycle Methods
     public override func loadView() {
         super.loadView()
-        self.view = MainView()
+        self.view = MainView(numberOfSteps: 4)
     }
     
     public override func viewDidLoad() {
