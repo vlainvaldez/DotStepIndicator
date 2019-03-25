@@ -30,10 +30,25 @@ public class StepComponentView: UIView {
         return view
     }()
     
+    private lazy var horizontalLayer: CALayer = {
+        let layer: CALayer = CALayer()
+        layer.backgroundColor = AppUI.Color.blue.cgColor
+        layer.frame = CGRect(
+            x: self.horizontalLineView.bounds.minX,
+            y: self.horizontalLineView.bounds.minY,
+            width: 0.0,
+            height: self.horizontalLineView.frame.height
+        )
+        return layer
+    }()
+    
+    public let dotSize: CGFloat = 20.0
+    
     // MARK: Stored Properties
     private var horizontalLineWidth: Constraint!
-    
-    
+    private var horizontalLayerWidth: CGFloat = 0.0
+    private var dotViewHeight: Constraint!
+    private var dotViewWidth: Constraint!
     // MARK: Initializer
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,11 +57,11 @@ public class StepComponentView: UIView {
             self.dotView, self.horizontalLineView
         ])
         
-        self.dotView.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+        self.dotView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
-            make.height.equalTo(20.0)
-            make.width.equalTo(20.0)
+            self.dotViewHeight = make.height.equalTo(self.dotSize).constraint
+            self.dotViewWidth =  make.width.equalTo(self.dotSize).constraint
         }
         
         self.horizontalLineView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
@@ -61,6 +76,8 @@ public class StepComponentView: UIView {
         super.layoutSubviews()        
         self.dotView.setRadius()
         self.endDotView.setRadius()
+        
+        self.horizontalLineView.layer.addSublayer(self.horizontalLayer)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -76,21 +93,33 @@ extension StepComponentView {
     
     public func withEnd() {
         self.subview(forAutoLayout: self.endDotView)
-        self.endDotView.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+        self.endDotView.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
             make.top.equalToSuperview()
             make.leading.equalTo(self.horizontalLineView.snp.trailing)
-            make.height.equalTo(20.0)
-            make.width.equalTo(20.0)
+            self.dotViewHeight = make.height.equalTo(self.dotSize).constraint
+            self.dotViewWidth = make.width.equalTo(self.dotSize).constraint
         }
     }
     
-    public func setPassed(){
+    func setPassed(){
+        UIView.animate(withDuration: 2.0) { [weak self] in
+            guard let self = self else { return }
+            self.horizontalLayer.frame.size.width = self.horizontalLineView.frame.width
+        }
+        
         self.dotView.backgroundColor = AppUI.Color.blue
-        self.horizontalLineView.backgroundColor = AppUI.Color.blue
         self.endDotView.backgroundColor = AppUI.Color.blue
     }
     
     public func setCurrent() {
         self.dotView.backgroundColor = AppUI.Color.blue
+        
+//        UIView.animate(withDuration: 2.0) { [weak self] in
+//            guard let self = self else { return }
+//            self.dotViewWidth.update(offset: 20.0)
+//            self.dotViewHeight.update(offset: 20.0)
+//        }
+                
     }
+    
 }
