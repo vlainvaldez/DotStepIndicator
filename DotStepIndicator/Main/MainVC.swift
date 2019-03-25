@@ -35,6 +35,7 @@ extension MainVC {
 // MARK: Target Action Methods
 extension MainVC {
     @objc func nextButtonTapped() {
-        self.rootView.setNext()
+        self.rootView.dottedStepsIndicator.setNext()
+        
     }
 }

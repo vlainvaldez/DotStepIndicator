@@ -14,6 +14,7 @@
 		7C52F8D32243D79000C9436D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D22243D79000C9436D /* UIViewExtensions.swift */; };
 		7C52F8D52243D7E200C9436D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D42243D7E200C9436D /* MainView.swift */; };
 		7C52F8D92243DE0700C9436D /* AppUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52F8D82243DE0700C9436D /* AppUI.swift */; };
+		8124ABE12248ACF900761934 /* DottedStepsIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8124ABE02248ACF900761934 /* DottedStepsIndicator.swift */; };
 		818FD32D22446633004988F4 /* StepComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818FD32C22446633004988F4 /* StepComponentView.swift */; };
 		D4B766EC80A7656F97B24864 /* Pods_DotStepIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D02A6F6DBE0C9D0FF32E32 /* Pods_DotStepIndicator.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		7C52F8D22243D79000C9436D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		7C52F8D42243D7E200C9436D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7C52F8D82243DE0700C9436D /* AppUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUI.swift; sourceTree = "<group>"; };
+		8124ABE02248ACF900761934 /* DottedStepsIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedStepsIndicator.swift; sourceTree = "<group>"; };
 		818FD32C22446633004988F4 /* StepComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepComponentView.swift; sourceTree = "<group>"; };
 		D2B3D4B4E9DF19F99CB00724 /* Pods-DotStepIndicator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DotStepIndicator.release.xcconfig"; path = "Pods/Target Support Files/Pods-DotStepIndicator/Pods-DotStepIndicator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 			children = (
 				818FD32B224465EB004988F4 /* StepIndicator */,
 				7C52F8D42243D7E200C9436D /* MainView.swift */,
+				8124ABE02248ACF900761934 /* DottedStepsIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				7C52F8BD2243D51F00C9436D /* MainVC.swift in Sources */,
 				818FD32D22446633004988F4 /* StepComponentView.swift in Sources */,
 				7C52F8D52243D7E200C9436D /* MainView.swift in Sources */,
+				8124ABE12248ACF900761934 /* DottedStepsIndicator.swift in Sources */,
 				7C52F8D32243D79000C9436D /* UIViewExtensions.swift in Sources */,
 				7C52F8BB2243D51F00C9436D /* AppDelegate.swift in Sources */,
 			);
