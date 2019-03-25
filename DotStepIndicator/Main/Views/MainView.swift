@@ -28,13 +28,11 @@ public final class MainView: UIView {
     }()
     
     // MARK: Stored Properties
-    private var currentStep: Int = 0
-    private var numberOfSteps: Int
     
     // Initializer
-    public init(numberOfSteps: Int = 3) {
-        self.numberOfSteps = numberOfSteps
-        super.init(frame: CGRect.zero)
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+
         self.backgroundColor = UIColor.white
         
         self.subviews(forAutoLayout:

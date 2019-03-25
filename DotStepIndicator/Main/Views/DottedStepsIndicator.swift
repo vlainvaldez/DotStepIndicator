@@ -33,9 +33,7 @@ public class DottedStepsIndicator: UIView {
         self.subviews(forAutoLayout:
             self.stepStackView
         )
-        
-        self.stepComponents.first?.setCurrent()
-        
+
         for number in 0...self.numberOfSteps - 1 {
             let view: StepComponentView = StepComponentView()
             if number == self.numberOfSteps - 1 {
@@ -60,6 +58,8 @@ public class DottedStepsIndicator: UIView {
             make.trailing.equalToSuperview()
             make.height.equalTo(100.0)
         }
+        
+        self.stepComponents.first?.setCurrent()
     }
     
     public func setNext() {
