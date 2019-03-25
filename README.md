@@ -2,6 +2,9 @@
 
 > this can be used for form steps
 
+### Demo
+![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/dottedStepIndicator.gif)
+
 ### How To Use
 
 
