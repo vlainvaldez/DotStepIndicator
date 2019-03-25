@@ -18,10 +18,23 @@ public final class MainVC: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.rootView.nextButton.addTarget(
+            self,
+            action: #selector(MainVC.nextButtonTapped),
+            for: UIControl.Event.touchUpInside
+        )
     }
 }
 
+// MARK: Views
 extension MainVC {
     public unowned var rootView: MainView { return self.view as! MainView }
 }
 
+// MARK: Target Action Methods
+extension MainVC {
+    @objc func nextButtonTapped() {
+        
+    }
+}

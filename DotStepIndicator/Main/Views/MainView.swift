@@ -39,6 +39,17 @@ public final class MainView: UIView {
         return view
     }()
     
+    public let nextButton: UIButton = {
+        let view: UIButton = UIButton()
+        view.setTitle("Next", for: UIControl.State.normal)
+        view.setTitleColor(
+            UIColor.white,
+            for: UIControl.State.normal
+        )
+        view.backgroundColor = AppUI.Color.blue
+        return view
+    }()
+    
     // MARK: Stored Properties
     
     // Initializer
@@ -48,7 +59,16 @@ public final class MainView: UIView {
         
         self.backgroundColor = UIColor.white
         
-        self.subviews(forAutoLayout: self.stepStackView)
+        self.subviews(forAutoLayout:
+            self.stepStackView, self.nextButton
+        )
+        
+        self.nextButton.snp.remakeConstraints { [unowned self] (make: ConstraintMaker) -> Void in
+            make.top.equalTo(self.stepStackView.snp.bottom).offset(20.0)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(100.0)
+            make.height.equalTo(60.0)
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
