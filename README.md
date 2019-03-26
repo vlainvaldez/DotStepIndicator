@@ -9,7 +9,7 @@
 ![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/dottedStepIndicator.gif)
 
 #### With Previous
-![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/withPrevious.gif)
+![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/master/withPrevious.gif)
 
 ### How To Use
 
