@@ -25,7 +25,9 @@ public class DottedStepsIndicator: UIView {
     private var numberOfSteps: Int
     
     // Initializer
-    public init(numberOfSteps: Int = 3) {
+    public init(numberOfSteps: Int = 3,
+                activeColor: UIColor = UIColor.blue,
+                inActiveColor: UIColor = UIColor.lightGray) {
         
         switch numberOfSteps < 3 {
         case true:
@@ -43,6 +45,8 @@ public class DottedStepsIndicator: UIView {
 
         for number in 0...self.numberOfSteps - 1 {
             let view: StepComponentView = StepComponentView()
+            view.activeColor = activeColor
+            view.inactiveColor = inActiveColor
             if number == self.numberOfSteps - 1 {
                 view.withEnd()
             }   
@@ -74,7 +78,7 @@ public class DottedStepsIndicator: UIView {
 
 // MARK: Public API
 extension DottedStepsIndicator {
-    
+
     public func gotToNext() {
         let previousStep: StepComponentView = self.stepComponents[self.currentStep]
         previousStep.setPassed()

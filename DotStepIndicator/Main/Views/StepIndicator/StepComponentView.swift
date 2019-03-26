@@ -12,27 +12,27 @@ import SnapKit
 public class StepComponentView: UIView {
     
     // MARK: Subviews
-    public let dotView: UIView = {
+    public lazy var dotView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = self.inactiveColor
         return view
     }()
     
-    public let horizontalLineView: UIView = {
+    public lazy var horizontalLineView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = self.inactiveColor
         return view
     }()
     
-    public let endDotView: UIView = {
+    public lazy var endDotView: UIView = {
         let view: UIView = UIView()
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = self.inactiveColor
         return view
     }()
     
     private lazy var horizontalLayer: CALayer = {
         let layer: CALayer = CALayer()
-        layer.backgroundColor = AppUI.Color.blue.cgColor
+        layer.backgroundColor = self.activeColor.cgColor
         layer.frame = CGRect(
             x: self.horizontalLineView.bounds.minX,
             y: self.horizontalLineView.bounds.minY,
@@ -43,6 +43,21 @@ public class StepComponentView: UIView {
     }()
     
     public let dotSize: CGFloat = 20.0
+    
+    public var inactiveColor: UIColor = UIColor.lightGray {
+        didSet {
+            self.dotView.backgroundColor = self.inactiveColor
+            self.endDotView.backgroundColor = self.inactiveColor
+            self.horizontalLineView.backgroundColor = self.inactiveColor
+        }
+    }
+    public var activeColor: UIColor = UIColor.blue {
+        didSet {
+            self.dotView.backgroundColor = self.activeColor
+            self.endDotView.backgroundColor = self.activeColor
+            self.horizontalLineView.backgroundColor = self.activeColor
+        }
+    }
     
     // MARK: Stored Properties
     private var horizontalLineWidth: Constraint!
@@ -107,12 +122,12 @@ extension StepComponentView {
             self.horizontalLayer.frame.size.width = self.horizontalLineView.frame.width
         }
         
-        self.dotView.backgroundColor = AppUI.Color.blue
-        self.endDotView.backgroundColor = AppUI.Color.blue
+        self.dotView.backgroundColor = self.activeColor
+        self.endDotView.backgroundColor = self.activeColor
     }
     
     public func setCurrent() {
-        self.dotView.backgroundColor = AppUI.Color.blue
+        self.dotView.backgroundColor = self.activeColor
     }
     
     public func inactiveHorizontalView() {
@@ -123,11 +138,11 @@ extension StepComponentView {
     }
     
     public func inactiveDotView() {
-        self.dotView.backgroundColor = UIColor.lightGray
+        self.dotView.backgroundColor = self.inactiveColor
     }
     
     public func inactiveEndDotView() {        
-        self.endDotView.backgroundColor = UIColor.lightGray
+        self.endDotView.backgroundColor = self.inactiveColor
     }
     
 }

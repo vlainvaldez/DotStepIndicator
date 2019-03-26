@@ -29,7 +29,7 @@
 		7C52F8C42243D52000C9436D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C52F8C62243D52000C9436D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C52F8D22243D79000C9436D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		7C52F8D42243D7E200C9436D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7C52F8D42243D7E200C9436D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainView.swift; path = Views/MainView.swift; sourceTree = "<group>"; };
 		7C52F8D82243DE0700C9436D /* AppUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUI.swift; sourceTree = "<group>"; };
 		8124ABE02248ACF900761934 /* DottedStepsIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DottedStepsIndicator.swift; sourceTree = "<group>"; };
 		818FD32C22446633004988F4 /* StepComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepComponentView.swift; sourceTree = "<group>"; };
@@ -90,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				7C52F8CF2243D67C00C9436D /* Views */,
+				7C52F8D42243D7E200C9436D /* MainView.swift */,
 				7C52F8BC2243D51F00C9436D /* MainVC.swift */,
 			);
 			path = Main;
@@ -116,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				818FD32B224465EB004988F4 /* StepIndicator */,
-				7C52F8D42243D7E200C9436D /* MainView.swift */,
 				8124ABE02248ACF900761934 /* DottedStepsIndicator.swift */,
 			);
 			path = Views;
