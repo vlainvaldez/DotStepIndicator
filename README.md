@@ -2,6 +2,9 @@
 
 > this can be used for form steps
 
+## Dependencies
+-  
+
 ### Demo
 ![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/dottedStepIndicator.gif)
 
@@ -60,11 +63,13 @@ extension MainVC {
 // MARK: Target Action Methods
 extension MainVC {
 
-
+	// NOTE: Implementation of highlighting
     @objc func nextButtonTapped() {
-    	// This is how next step gets collored
-        self.rootView.dottedStepsIndicator.setNext()
-        
+        self.rootView.dottedStepsIndicator.gotToNext()
+    }
+    
+    @objc func previousButtonTapped() {
+        self.rootView.dottedStepsIndicator.backToPrevious()
     }
 }
 ```
