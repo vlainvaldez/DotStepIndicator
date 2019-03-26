@@ -62,7 +62,13 @@ public class DottedStepsIndicator: UIView {
         self.stepComponents.first?.setCurrent()
     }
     
-    public func setNext() {
+    
+}
+
+// MARK: Public API
+extension DottedStepsIndicator {
+    
+    public func gotToNext() {
         let previousStep: StepComponentView = self.stepComponents[self.currentStep]
         previousStep.setPassed()
         
@@ -76,12 +82,12 @@ public class DottedStepsIndicator: UIView {
         }
     }
     
-    public func setPrevious() {
+    public func backToPrevious() {
         
         switch self.currentStep >= 0 {
         case true:
             let currentStep: StepComponentView = self.stepComponents[self.currentStep]
-
+            
             if self.currentStep + 1 == self.numberOfSteps {
                 currentStep.inactiveEndDotView()
                 currentStep.inactiveHorizontalView()
@@ -98,6 +104,5 @@ public class DottedStepsIndicator: UIView {
         case false:
             break
         }
-
     }
 }

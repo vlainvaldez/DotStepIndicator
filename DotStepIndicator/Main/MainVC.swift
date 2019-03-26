@@ -41,10 +41,10 @@ extension MainVC {
 // MARK: Target Action Methods
 extension MainVC {
     @objc func nextButtonTapped() {
-        self.rootView.dottedStepsIndicator.setNext()
+        self.rootView.dottedStepsIndicator.gotToNext()
     }
     
     @objc func previousButtonTapped() {
-        self.rootView.dottedStepsIndicator.setPrevious()
+        self.rootView.dottedStepsIndicator.backToPrevious()
     }
 }
