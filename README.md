@@ -3,7 +3,7 @@
 > this can be used for form steps
 
 ## Dependencies
--  
+-  [SnapKit](http://snapkit.io/)
 
 ### Demo
 ![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/dottedStepIndicator.gif)
