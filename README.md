@@ -19,6 +19,9 @@ public let dottedStepsIndicator: DottedStepsIndicator = {
 }()
 ```
 
+### Minimum Number of Steps = 3
+> Probably theres no reason for you to use steps if it's less than 3, if there is hire a new designer
+
 ### Set the Constraints
 
 ```
