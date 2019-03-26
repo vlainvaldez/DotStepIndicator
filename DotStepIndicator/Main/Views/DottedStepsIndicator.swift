@@ -38,7 +38,7 @@ public class DottedStepsIndicator: UIView {
             let view: StepComponentView = StepComponentView()
             if number == self.numberOfSteps - 1 {
                 view.withEnd()
-            }
+            }   
             self.stepStackView.addArrangedSubview(view)
             self.stepComponents.append(view)
         }
@@ -74,5 +74,30 @@ public class DottedStepsIndicator: UIView {
         case false:
             break
         }
+    }
+    
+    public func setPrevious() {
+        
+        switch self.currentStep >= 0 {
+        case true:
+            let currentStep: StepComponentView = self.stepComponents[self.currentStep]
+
+            if self.currentStep + 1 == self.numberOfSteps {
+                currentStep.inactiveEndDotView()
+                currentStep.inactiveHorizontalView()
+            } else {
+                let previousStep: StepComponentView = self.stepComponents[self.currentStep + 1]
+                previousStep.inactiveDotView()
+                currentStep.inactiveHorizontalView()
+            }
+            
+            if self.currentStep > 0 {
+                self.currentStep -= 1
+            }
+            
+        case false:
+            break
+        }
+
     }
 }

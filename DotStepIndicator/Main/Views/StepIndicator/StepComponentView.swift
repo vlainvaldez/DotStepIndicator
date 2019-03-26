@@ -113,13 +113,21 @@ extension StepComponentView {
     
     public func setCurrent() {
         self.dotView.backgroundColor = AppUI.Color.blue
-        
-//        UIView.animate(withDuration: 2.0) { [weak self] in
-//            guard let self = self else { return }
-//            self.dotViewWidth.update(offset: 20.0)
-//            self.dotViewHeight.update(offset: 20.0)
-//        }
-                
+    }
+    
+    public func inactiveHorizontalView() {
+        UIView.animate(withDuration: 2.0) { [weak self] in
+            guard let self = self else { return }
+            self.horizontalLayer.frame.size.width = 0.0
+        }
+    }
+    
+    public func inactiveDotView() {
+        self.dotView.backgroundColor = UIColor.lightGray
+    }
+    
+    public func inactiveEndDotView() {        
+        self.endDotView.backgroundColor = UIColor.lightGray
     }
     
 }

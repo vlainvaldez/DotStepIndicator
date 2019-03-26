@@ -24,6 +24,12 @@ public final class MainVC: UIViewController {
             action: #selector(MainVC.nextButtonTapped),
             for: UIControl.Event.touchUpInside
         )
+        
+        self.rootView.previousButton.addTarget(
+            self,
+            action: #selector(MainVC.previousButtonTapped),
+            for: UIControl.Event.touchUpInside
+        )
     }
 }
 
@@ -36,6 +42,9 @@ extension MainVC {
 extension MainVC {
     @objc func nextButtonTapped() {
         self.rootView.dottedStepsIndicator.setNext()
-        
+    }
+    
+    @objc func previousButtonTapped() {
+        self.rootView.dottedStepsIndicator.setPrevious()
     }
 }
