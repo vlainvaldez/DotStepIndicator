@@ -26,7 +26,14 @@ public class DottedStepsIndicator: UIView {
     
     // Initializer
     public init(numberOfSteps: Int = 3) {
-        self.numberOfSteps = numberOfSteps
+        
+        switch numberOfSteps < 3 {
+        case true:
+            self.numberOfSteps = 3
+        case false:
+            self.numberOfSteps = numberOfSteps
+        }
+        
         super.init(frame: CGRect.zero)
         self.backgroundColor = UIColor.white
         

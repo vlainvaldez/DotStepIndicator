@@ -12,7 +12,7 @@ import SnapKit
 public final class MainView: UIView {
     
     public let dottedStepsIndicator: DottedStepsIndicator = {
-        let view: DottedStepsIndicator = DottedStepsIndicator(numberOfSteps: 4)
+        let view: DottedStepsIndicator = DottedStepsIndicator(numberOfSteps: 1)
         return view
     }()
     
