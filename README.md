@@ -8,6 +8,9 @@
 ### Demo
 ![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/dottedStepIndicator.gif)
 
+#### With Previous
+![alt text](https://github.com/vlainvaldez/DotStepIndicator/blob/stachViewImplementation/withPrevious.gif)
+
 ### How To Use
 
 
@@ -19,7 +22,7 @@ public let dottedStepsIndicator: DottedStepsIndicator = {
 }()
 ```
 
-### Minimum Number of Steps = 3
+### Minimum Number of Steps == 3
 > Probably theres no reason for you to use steps if it's less than 3, if there is hire a new designer
 
 ### Set the Constraints
