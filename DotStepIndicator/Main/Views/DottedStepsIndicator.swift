@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 public class DottedStepsIndicator: UIView {
-
+    
     private lazy var stepComponents: [StepComponentView] = [StepComponentView]()
     
     public let stepStackView: UIStackView = {
@@ -23,15 +23,16 @@ public class DottedStepsIndicator: UIView {
     // MARK: Stored Properties
     private var currentStep: Int = 0
     private var numberOfSteps: Int
+    private var isLast: Bool = false
     
     // Initializer
     public init(numberOfSteps: Int = 3,
                 activeColor: UIColor = UIColor.blue,
                 inActiveColor: UIColor = UIColor.lightGray) {
         
-        switch numberOfSteps < 3 {
+        switch numberOfSteps < 2 {
         case true:
-            self.numberOfSteps = 3
+            self.numberOfSteps = 2
         case false:
             self.numberOfSteps = numberOfSteps
         }
@@ -42,14 +43,14 @@ public class DottedStepsIndicator: UIView {
         self.subviews(forAutoLayout:
             self.stepStackView
         )
-
+        
         for number in 0...self.numberOfSteps - 1 {
             let view: StepComponentView = StepComponentView()
             view.activeColor = activeColor
             view.inactiveColor = inActiveColor
             if number == self.numberOfSteps - 1 {
                 view.withEnd()
-            }   
+            }
             self.stepStackView.addArrangedSubview(view)
             self.stepComponents.append(view)
         }
@@ -73,12 +74,11 @@ public class DottedStepsIndicator: UIView {
         self.stepComponents.first?.setCurrent()
     }
     
-    
 }
 
 // MARK: Public API
 extension DottedStepsIndicator {
-
+    
     public func gotToNext() {
         let previousStep: StepComponentView = self.stepComponents[self.currentStep]
         previousStep.setPassed()
@@ -89,7 +89,7 @@ extension DottedStepsIndicator {
             let nextStep: StepComponentView = self.stepComponents[self.currentStep]
             nextStep.setCurrent()
         case false:
-            break
+            self.isLast = true
         }
     }
     
@@ -98,20 +98,19 @@ extension DottedStepsIndicator {
         switch self.currentStep >= 0 {
         case true:
             let currentStep: StepComponentView = self.stepComponents[self.currentStep]
-            
-            if self.currentStep + 1 == self.numberOfSteps {
+            if self.isLast {
                 currentStep.inactiveEndDotView()
                 currentStep.inactiveHorizontalView()
+                self.isLast = false
             } else {
-                let previousStep: StepComponentView = self.stepComponents[self.currentStep + 1]
-                previousStep.inactiveDotView()
-                currentStep.inactiveHorizontalView()
+                let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
+                currentStep.inactiveDotView()
+                previousStep.inactiveHorizontalView()
+                
+                if self.currentStep > 0 {
+                    self.currentStep -= 1
+                }
             }
-            
-            if self.currentStep > 0 {
-                self.currentStep -= 1
-            }
-            
         case false:
             break
         }

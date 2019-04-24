@@ -13,7 +13,7 @@ public final class MainView: UIView {
     
     public let dottedStepsIndicator: DottedStepsIndicator = {
         let view: DottedStepsIndicator = DottedStepsIndicator(
-            numberOfSteps: 3,
+            numberOfSteps: 2,
             activeColor: AppUI.Color.blue,
             inActiveColor: UIColor.black)
         return view

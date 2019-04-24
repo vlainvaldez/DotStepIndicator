@@ -35,7 +35,7 @@ public final class MainVC: UIViewController {
 
 // MARK: Views
 extension MainVC {
-    public unowned var rootView: MainView { return self.view as! MainView }
+    public unowned var rootView: MainView { return self.view as! MainView } //swiftlint:disable:this force_cast
 }
 
 // MARK: Target Action Methods
