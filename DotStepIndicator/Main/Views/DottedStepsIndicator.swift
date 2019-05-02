@@ -113,17 +113,12 @@ extension DottedStepsIndicator {
                 currentStep.inactiveHorizontalView()
                 self.isLast = false
             } else {
-//                switch self.currentStep > 0 {
-//                case true:
-                    let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
-                    currentStep.inactiveDotView()
-                    previousStep.inactiveHorizontalView()
-                    if self.currentStep > 0 {
-                        self.currentStep -= 1
-                    }
-//                case false:
-//                    break
-//                }
+                let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
+                currentStep.inactiveDotView()
+                previousStep.inactiveHorizontalView()
+                if self.currentStep > 0 {
+                    self.currentStep -= 1
+                }
             }
         case false:
             break
