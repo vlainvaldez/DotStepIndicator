@@ -84,6 +84,13 @@ extension DottedStepsIndicator {
         let previousStep: StepComponentView = self.stepComponents[self.currentStep]
         previousStep.setPassed()
         
+        switch self.isLast {
+        case true:
+            self.stepComponents.last?.activateEndAccessory()
+        case false:
+            break
+        }
+        
         switch self.currentStep < self.stepComponents.count - 1 {
         case true:
             self.currentStep += 1

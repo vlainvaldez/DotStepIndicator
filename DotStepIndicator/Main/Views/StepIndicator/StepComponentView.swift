@@ -48,6 +48,12 @@ public class StepComponentView: UIView {
         return view
     }()
     
+    public lazy var endDoneAccessory: UIImageView = {
+        let view: UIImageView = UIImageView()
+        view.isHidden = true
+        return view
+    }()
+    
     public let dotSize: CGFloat = 20.0
     
     public var inactiveColor: UIColor = UIColor.lightGray {
@@ -101,13 +107,6 @@ public class StepComponentView: UIView {
         self.endDotView.setRadius()
         
         self.horizontalLineView.layer.addSublayer(self.horizontalLayer)
-        
-//        guard let doneImage = self.doneImage else { return }
-//        let dotViewSize: CGSize = self.dotView.frame.size
-//
-//        let newSize = CGSize(width: 20.0, height: 20.0)
-//
-//        self.setDoneAccessory(image: doneImage, with: newSize)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -152,51 +151,41 @@ extension StepComponentView {
             guard let self = self else { return }
             self.horizontalLayer.frame.size.width = 0.0
             self.doneAccessory.isHidden = true
+            self.endDoneAccessory.isHidden = true
         }
     }
     
     public func inactiveDotView() {
         self.dotView.backgroundColor = self.inactiveColor
-        self.doneAccessory.isHidden = true
     }
     
     public func inactiveEndDotView() {        
         self.endDotView.backgroundColor = self.inactiveColor
     }
     
+    public func activateEndAccessory() {
+        self.endDoneAccessory.isHidden = false
+    }
+    
     public func withDone(accessory: UIImage) {
         self.doneImage = accessory
         self.doneAccessory.image = accessory
+        self.endDoneAccessory.image = accessory
         self.dotView.subview(forAutoLayout: self.doneAccessory)
+        self.endDotView.subview(forAutoLayout: self.endDoneAccessory)
         self.doneAccessory.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
             make.top.equalToSuperview().offset(5.0)
             make.leading.equalToSuperview().offset(5.0)
             make.trailing.equalToSuperview().inset(5.0)
             make.bottom.equalToSuperview().inset(5.0)
         }
+        
+        self.endDoneAccessory.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+            make.top.equalToSuperview().offset(5.0)
+            make.leading.equalToSuperview().offset(5.0)
+            make.trailing.equalToSuperview().inset(5.0)
+            make.bottom.equalToSuperview().inset(5.0)
+        }
     }
-    
 }
 
-// MARK: - Helper Methods
-extension StepComponentView {
-    
-//    private func scaleUIImageToSize(image: UIImage, size: CGSize) -> UIImage {
-//        let hasAlpha = false
-//        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
-//
-//        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
-//
-//        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
-//
-//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        return scaledImage!
-//    }
-//
-//    private func setDoneAccessory(image: UIImage, with size: CGSize) {
-//        self.doneAccessory.image = self.scaleUIImageToSize(image: image, size: size)
-//    }
-    
-}
