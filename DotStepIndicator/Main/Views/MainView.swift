@@ -15,7 +15,9 @@ public final class MainView: UIView {
         let view: DottedStepsIndicator = DottedStepsIndicator(
             numberOfSteps: 2,
             activeColor: AppUI.Color.blue,
-            inActiveColor: UIColor.black)
+            inActiveColor: UIColor.black,
+            doneAccessory: #imageLiteral(resourceName: "done-icon")
+        )
         return view
     }()
     

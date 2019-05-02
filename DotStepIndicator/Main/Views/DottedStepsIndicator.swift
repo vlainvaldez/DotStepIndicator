@@ -28,7 +28,7 @@ public class DottedStepsIndicator: UIView {
     // Initializer
     public init(numberOfSteps: Int = 3,
                 activeColor: UIColor = UIColor.blue,
-                inActiveColor: UIColor = UIColor.lightGray) {
+                inActiveColor: UIColor = UIColor.lightGray, doneAccessory: UIImage? = nil ) {
         
         switch numberOfSteps < 2 {
         case true:
@@ -47,8 +47,10 @@ public class DottedStepsIndicator: UIView {
         for number in 0...self.numberOfSteps - 1 {
             let view: StepComponentView = StepComponentView()
             view.activeColor = activeColor
-            view.inactiveColor = inActiveColor
-            view.withDone(accessory: #imageLiteral(resourceName: "done-icon"))
+            view.inactiveColor = inActiveColor            
+            if let doneImageAccessory = doneAccessory {
+                view.withDone(accessory: doneImageAccessory)
+            }
             if number == self.numberOfSteps - 1 {
                 view.withEnd()
             }
@@ -103,7 +105,7 @@ extension DottedStepsIndicator {
     
     public func backToPrevious() {
         
-        switch self.currentStep >= 0 {
+        switch self.currentStep > 0 {
         case true:
             let currentStep: StepComponentView = self.stepComponents[self.currentStep]
             if self.isLast {
@@ -111,12 +113,17 @@ extension DottedStepsIndicator {
                 currentStep.inactiveHorizontalView()
                 self.isLast = false
             } else {
-                let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
-                currentStep.inactiveDotView()
-                previousStep.inactiveHorizontalView()                
-                if self.currentStep > 0 {
-                    self.currentStep -= 1
-                }
+//                switch self.currentStep > 0 {
+//                case true:
+                    let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
+                    currentStep.inactiveDotView()
+                    previousStep.inactiveHorizontalView()
+                    if self.currentStep > 0 {
+                        self.currentStep -= 1
+                    }
+//                case false:
+//                    break
+//                }
             }
         case false:
             break
