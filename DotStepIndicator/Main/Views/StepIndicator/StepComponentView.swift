@@ -42,6 +42,12 @@ public class StepComponentView: UIView {
         return layer
     }()
     
+    public lazy var doneAccessory: UIImageView = {
+        let view: UIImageView = UIImageView()
+        view.isHidden = true
+        return view
+    }()
+    
     public let dotSize: CGFloat = 20.0
     
     public var inactiveColor: UIColor = UIColor.lightGray {
@@ -64,6 +70,8 @@ public class StepComponentView: UIView {
     private var horizontalLayerWidth: CGFloat = 0.0
     private var dotViewHeight: Constraint!
     private var dotViewWidth: Constraint!
+    private var doneImage: UIImage!
+    
     // MARK: Initializer
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -93,6 +101,13 @@ public class StepComponentView: UIView {
         self.endDotView.setRadius()
         
         self.horizontalLineView.layer.addSublayer(self.horizontalLayer)
+        
+//        guard let doneImage = self.doneImage else { return }
+//        let dotViewSize: CGSize = self.dotView.frame.size
+//
+//        let newSize = CGSize(width: 20.0, height: 20.0)
+//
+//        self.setDoneAccessory(image: doneImage, with: newSize)
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -124,25 +139,64 @@ extension StepComponentView {
         
         self.dotView.backgroundColor = self.activeColor
         self.endDotView.backgroundColor = self.activeColor
+        self.doneAccessory.isHidden = false
     }
     
     public func setCurrent() {
         self.dotView.backgroundColor = self.activeColor
+        
     }
     
     public func inactiveHorizontalView() {
         UIView.animate(withDuration: 2.0) { [weak self] in
             guard let self = self else { return }
             self.horizontalLayer.frame.size.width = 0.0
+            self.doneAccessory.isHidden = true
         }
     }
     
     public func inactiveDotView() {
         self.dotView.backgroundColor = self.inactiveColor
+        self.doneAccessory.isHidden = true
     }
     
     public func inactiveEndDotView() {        
         self.endDotView.backgroundColor = self.inactiveColor
     }
+    
+    public func withDone(accessory: UIImage) {
+        self.doneImage = accessory
+        self.doneAccessory.image = accessory
+        self.dotView.subview(forAutoLayout: self.doneAccessory)
+        self.doneAccessory.snp.remakeConstraints { (make: ConstraintMaker) -> Void in
+            make.top.equalToSuperview().offset(5.0)
+            make.leading.equalToSuperview().offset(5.0)
+            make.trailing.equalToSuperview().inset(5.0)
+            make.bottom.equalToSuperview().inset(5.0)
+        }
+    }
+    
+}
+
+// MARK: - Helper Methods
+extension StepComponentView {
+    
+//    private func scaleUIImageToSize(image: UIImage, size: CGSize) -> UIImage {
+//        let hasAlpha = false
+//        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+//
+//        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+//
+//        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
+//
+//        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//
+//        return scaledImage!
+//    }
+//
+//    private func setDoneAccessory(image: UIImage, with size: CGSize) {
+//        self.doneAccessory.image = self.scaleUIImageToSize(image: image, size: size)
+//    }
     
 }

@@ -48,6 +48,7 @@ public class DottedStepsIndicator: UIView {
             let view: StepComponentView = StepComponentView()
             view.activeColor = activeColor
             view.inactiveColor = inActiveColor
+            view.withDone(accessory: #imageLiteral(resourceName: "done-icon"))
             if number == self.numberOfSteps - 1 {
                 view.withEnd()
             }
@@ -105,8 +106,7 @@ extension DottedStepsIndicator {
             } else {
                 let previousStep: StepComponentView = self.stepComponents[self.currentStep - 1]
                 currentStep.inactiveDotView()
-                previousStep.inactiveHorizontalView()
-                
+                previousStep.inactiveHorizontalView()                
                 if self.currentStep > 0 {
                     self.currentStep -= 1
                 }
